@@ -48,6 +48,7 @@ public class JavaScriptBridgeInterface {
 
   @JavascriptInterface
   public void _callHandler(final String handlerName, final String _callHandlerID, final String args) {
+    Log.d(LOG_TAG,"收到jsallHandler请求，handlerName="+handlerName+",callHandlerID="+_callHandlerID+",args="+args);
     if (inAppWebView == null) {
       return;
     }
