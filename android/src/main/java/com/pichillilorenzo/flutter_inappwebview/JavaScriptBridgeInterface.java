@@ -51,6 +51,7 @@ public class JavaScriptBridgeInterface {
     if (inAppWebView == null) {
       return;
     }
+    Log.d(LOG_TAG, "收到nativejs _callHandler: " + handlerName + ", " + _callHandlerID + ", " + args);
 
     final Map<String, Object> obj = new HashMap<>();
     obj.put("handlerName", handlerName);
