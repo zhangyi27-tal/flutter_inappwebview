@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -142,9 +143,11 @@ public class JavaScriptBridgeInterface {
     }
     Log.d(LOG_TAG, "收到nativejs jsCallClient: " + "args=" + args);
     final String handlerName = "jsCallClient";
+    JSONArray jsonArray = new JSONArray();
+    jsonArray.put(args);
     final Map<String, Object> obj = new HashMap<>();
     obj.put("handlerName", handlerName);
-    obj.put("args", args);
+    obj.put("args", jsonArray.toString());
 
     // java.lang.RuntimeException: Methods marked with @UiThread must be executed on the main thread.
     // https://github.com/pichillilorenzo/flutter_inappwebview/issues/98
