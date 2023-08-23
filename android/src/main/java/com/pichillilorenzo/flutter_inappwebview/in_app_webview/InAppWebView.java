@@ -216,102 +216,127 @@ final public class InAppWebView extends InputAwareWebView implements InAppWebVie
 
     WebSettings settings = getSettings();
 
-    settings.setJavaScriptEnabled(options.javaScriptEnabled);
-    settings.setJavaScriptCanOpenWindowsAutomatically(options.javaScriptCanOpenWindowsAutomatically);
-    settings.setBuiltInZoomControls(options.builtInZoomControls);
-    settings.setDisplayZoomControls(options.displayZoomControls);
-    settings.setSupportMultipleWindows(options.supportMultipleWindows);
+//    settings.setJavaScriptEnabled(options.javaScriptEnabled);
+//    settings.setJavaScriptCanOpenWindowsAutomatically(options.javaScriptCanOpenWindowsAutomatically);
+//    settings.setBuiltInZoomControls(options.builtInZoomControls);
+//    settings.setDisplayZoomControls(options.displayZoomControls);
+//    settings.setSupportMultipleWindows(options.supportMultipleWindows);
+//
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+//      settings.setSafeBrowsingEnabled(options.safeBrowsingEnabled);
+//
+//    settings.setMediaPlaybackRequiresUserGesture(options.mediaPlaybackRequiresUserGesture);
+//
+//    settings.setDatabaseEnabled(options.databaseEnabled);
+//    settings.setDomStorageEnabled(options.domStorageEnabled);
+//
+//    if (options.userAgent != null && !options.userAgent.isEmpty())
+//      settings.setUserAgentString(options.userAgent);
+//    else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+//      settings.setUserAgentString(WebSettings.getDefaultUserAgent(getContext()));
+//
+//    if (options.applicationNameForUserAgent != null && !options.applicationNameForUserAgent.isEmpty()) {
+//      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+//        String userAgent = (options.userAgent != null && !options.userAgent.isEmpty()) ? options.userAgent : WebSettings.getDefaultUserAgent(getContext());
+//        String userAgentWithApplicationName = userAgent + " " + options.applicationNameForUserAgent;
+//        settings.setUserAgentString(userAgentWithApplicationName);
+//      }
+//    }
+//
+//    if (options.clearCache)
+//      clearAllCache();
+//    else if (options.clearSessionCache)
+//      CookieManager.getInstance().removeSessionCookie();
+//
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+//      CookieManager.getInstance().setAcceptThirdPartyCookies(this, options.thirdPartyCookiesEnabled);
+//
+//    settings.setLoadWithOverviewMode(options.loadWithOverviewMode);
+//    settings.setUseWideViewPort(options.useWideViewPort);
+//    settings.setSupportZoom(options.supportZoom);
+//    settings.setTextZoom(options.textZoom);
+//
+//    setVerticalScrollBarEnabled(!options.disableVerticalScroll && options.verticalScrollBarEnabled);
+//    setHorizontalScrollBarEnabled(!options.disableHorizontalScroll && options.horizontalScrollBarEnabled);
+//
+//    if (options.transparentBackground)
+//      setBackgroundColor(Color.TRANSPARENT);
+//
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && options.mixedContentMode != null)
+//      settings.setMixedContentMode(options.mixedContentMode);
+//
+//    settings.setAllowContentAccess(options.allowContentAccess);
+//    settings.setAllowFileAccess(options.allowFileAccess);
+//    settings.setAllowFileAccessFromFileURLs(options.allowFileAccessFromFileURLs);
+//    settings.setAllowUniversalAccessFromFileURLs(options.allowUniversalAccessFromFileURLs);
+//    setCacheEnabled(options.cacheEnabled);
+//    if (options.appCachePath != null && !options.appCachePath.isEmpty() && options.cacheEnabled) {
+//      // removed from Android API 33+ (https://developer.android.com/sdk/api_diff/33/changes)
+//      // settings.setAppCachePath(options.appCachePath);
+//      Util.invokeMethodIfExists(settings, "setAppCachePath", options.appCachePath);
+//    }
+//    settings.setBlockNetworkImage(options.blockNetworkImage);
+//    settings.setBlockNetworkLoads(options.blockNetworkLoads);
+//    if (options.cacheMode != null)
+//      settings.setCacheMode(options.cacheMode);
+//    settings.setCursiveFontFamily(options.cursiveFontFamily);
+//    settings.setDefaultFixedFontSize(options.defaultFixedFontSize);
+//    settings.setDefaultFontSize(options.defaultFontSize);
+//    settings.setDefaultTextEncodingName(options.defaultTextEncodingName);
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && options.disabledActionModeMenuItems != null)
+//      settings.setDisabledActionModeMenuItems(options.disabledActionModeMenuItems);
+//    settings.setFantasyFontFamily(options.fantasyFontFamily);
+//    settings.setFixedFontFamily(options.fixedFontFamily);
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && options.forceDark != null)
+//      settings.setForceDark(options.forceDark);
+//    settings.setGeolocationEnabled(options.geolocationEnabled);
+//    if (options.layoutAlgorithm != null) {
+//      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && options.layoutAlgorithm.equals(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING)) {
+//        settings.setLayoutAlgorithm(options.layoutAlgorithm);
+//      } else {
+//        settings.setLayoutAlgorithm(options.layoutAlgorithm);
+//      }
+//    }
+//    settings.setLoadsImagesAutomatically(options.loadsImagesAutomatically);
+//    settings.setMinimumFontSize(options.minimumFontSize);
+//    settings.setMinimumLogicalFontSize(options.minimumLogicalFontSize);
+//    setInitialScale(options.initialScale);
+//    settings.setNeedInitialFocus(options.needInitialFocus);
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+//      settings.setOffscreenPreRaster(options.offscreenPreRaster);
+//    settings.setSansSerifFontFamily(options.sansSerifFontFamily);
+//    settings.setSerifFontFamily(options.serifFontFamily);
+//    settings.setStandardFontFamily(options.standardFontFamily);
+//    if (options.preferredContentMode != null &&
+//            options.preferredContentMode == PreferredContentModeOptionType.DESKTOP.toValue()) {
+//      setDesktopMode(true);
+//    }
+//    settings.setSaveFormData(options.saveFormData);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-      settings.setSafeBrowsingEnabled(options.safeBrowsingEnabled);
 
-    settings.setMediaPlaybackRequiresUserGesture(options.mediaPlaybackRequiresUserGesture);
 
-    settings.setDatabaseEnabled(options.databaseEnabled);
-    settings.setDomStorageEnabled(options.domStorageEnabled);
-
-    if (options.userAgent != null && !options.userAgent.isEmpty())
-      settings.setUserAgentString(options.userAgent);
-    else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
-      settings.setUserAgentString(WebSettings.getDefaultUserAgent(getContext()));
-
-    if (options.applicationNameForUserAgent != null && !options.applicationNameForUserAgent.isEmpty()) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        String userAgent = (options.userAgent != null && !options.userAgent.isEmpty()) ? options.userAgent : WebSettings.getDefaultUserAgent(getContext());
-        String userAgentWithApplicationName = userAgent + " " + options.applicationNameForUserAgent;
-        settings.setUserAgentString(userAgentWithApplicationName);
-      }
+    setInitialScale(0);
+    settings.setSupportZoom(false);
+    settings.setBuiltInZoomControls(false);
+    settings.setTextZoom(100);
+    settings.setUseWideViewPort(true);
+    settings.setJavaScriptEnabled(true);
+    settings.setJavaScriptCanOpenWindowsAutomatically(true);
+    settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+//    settings.setAppCacheEnabled(true);
+    settings.setDatabaseEnabled(true);
+    settings.setAllowFileAccess(true);
+    settings.setSavePassword(true);
+    settings.setDomStorageEnabled(true);
+    settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NORMAL);
+    settings.setLoadWithOverviewMode(true);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
     }
+    settings.setMediaPlaybackRequiresUserGesture(false);
+    settings.setUserAgentString(settings.getUserAgentString() + " Version/" + 115656565 + " ThinkAcademyApp");
 
-    if (options.clearCache)
-      clearAllCache();
-    else if (options.clearSessionCache)
-      CookieManager.getInstance().removeSessionCookie();
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-      CookieManager.getInstance().setAcceptThirdPartyCookies(this, options.thirdPartyCookiesEnabled);
-
-    settings.setLoadWithOverviewMode(options.loadWithOverviewMode);
-    settings.setUseWideViewPort(options.useWideViewPort);
-    settings.setSupportZoom(options.supportZoom);
-    settings.setTextZoom(options.textZoom);
-
-    setVerticalScrollBarEnabled(!options.disableVerticalScroll && options.verticalScrollBarEnabled);
-    setHorizontalScrollBarEnabled(!options.disableHorizontalScroll && options.horizontalScrollBarEnabled);
-
-    if (options.transparentBackground)
-      setBackgroundColor(Color.TRANSPARENT);
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && options.mixedContentMode != null)
-      settings.setMixedContentMode(options.mixedContentMode);
-
-    settings.setAllowContentAccess(options.allowContentAccess);
-    settings.setAllowFileAccess(options.allowFileAccess);
-    settings.setAllowFileAccessFromFileURLs(options.allowFileAccessFromFileURLs);
-    settings.setAllowUniversalAccessFromFileURLs(options.allowUniversalAccessFromFileURLs);
-    setCacheEnabled(options.cacheEnabled);
-    if (options.appCachePath != null && !options.appCachePath.isEmpty() && options.cacheEnabled) {
-      // removed from Android API 33+ (https://developer.android.com/sdk/api_diff/33/changes)
-      // settings.setAppCachePath(options.appCachePath);
-      Util.invokeMethodIfExists(settings, "setAppCachePath", options.appCachePath);
-    }
-    settings.setBlockNetworkImage(options.blockNetworkImage);
-    settings.setBlockNetworkLoads(options.blockNetworkLoads);
-    if (options.cacheMode != null)
-      settings.setCacheMode(options.cacheMode);
-    settings.setCursiveFontFamily(options.cursiveFontFamily);
-    settings.setDefaultFixedFontSize(options.defaultFixedFontSize);
-    settings.setDefaultFontSize(options.defaultFontSize);
-    settings.setDefaultTextEncodingName(options.defaultTextEncodingName);
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && options.disabledActionModeMenuItems != null)
-      settings.setDisabledActionModeMenuItems(options.disabledActionModeMenuItems);
-    settings.setFantasyFontFamily(options.fantasyFontFamily);
-    settings.setFixedFontFamily(options.fixedFontFamily);
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && options.forceDark != null)
-      settings.setForceDark(options.forceDark);
-    settings.setGeolocationEnabled(options.geolocationEnabled);
-    if (options.layoutAlgorithm != null) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && options.layoutAlgorithm.equals(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING)) {
-        settings.setLayoutAlgorithm(options.layoutAlgorithm);
-      } else {
-        settings.setLayoutAlgorithm(options.layoutAlgorithm);
-      }
-    }
-    settings.setLoadsImagesAutomatically(options.loadsImagesAutomatically);
-    settings.setMinimumFontSize(options.minimumFontSize);
-    settings.setMinimumLogicalFontSize(options.minimumLogicalFontSize);
-    setInitialScale(options.initialScale);
-    settings.setNeedInitialFocus(options.needInitialFocus);
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-      settings.setOffscreenPreRaster(options.offscreenPreRaster);
-    settings.setSansSerifFontFamily(options.sansSerifFontFamily);
-    settings.setSerifFontFamily(options.serifFontFamily);
-    settings.setStandardFontFamily(options.standardFontFamily);
-    if (options.preferredContentMode != null &&
-            options.preferredContentMode == PreferredContentModeOptionType.DESKTOP.toValue()) {
-      setDesktopMode(true);
-    }
-    settings.setSaveFormData(options.saveFormData);
     if (options.incognito)
       setIncognito(true);
     if (options.hardwareAcceleration)
