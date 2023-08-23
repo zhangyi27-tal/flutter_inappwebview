@@ -323,6 +323,8 @@ final public class InAppWebView extends InputAwareWebView implements InAppWebVie
     settings.setJavaScriptEnabled(true);
     settings.setJavaScriptCanOpenWindowsAutomatically(true);
     settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+      settings.setSafeBrowsingEnabled(options.safeBrowsingEnabled);
 //    settings.setAppCacheEnabled(true);
     settings.setDatabaseEnabled(true);
     settings.setAllowFileAccess(true);
