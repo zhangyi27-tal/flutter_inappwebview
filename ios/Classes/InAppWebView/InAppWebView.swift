@@ -2764,18 +2764,7 @@ if(window.\(JAVASCRIPT_BRIDGE_NAME)[\(_callHandlerID)] != null) {
             if let wId = _windowId, let webViewTransport = InAppWebView.windowWebViews[wId] {
                 webView = webViewTransport.webView
             }
-            let array = [args]
-
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: array, options: [])
-
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    webView.jsCallClient(handlerName: handlerName, args: jsonString)
-                }
-                
-            } catch {
-                print("hwjs数组转换为JSON字符串时出错：\(error)")
-            }
+            webView.jsCallClient(handlerName: handlerName, args: args)
 
         }else if message.name == "onFindResultReceived" {
             let body = message.body as! [String: Any?]

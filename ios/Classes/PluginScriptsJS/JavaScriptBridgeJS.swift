@@ -16,7 +16,7 @@ let JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT = PluginScript(
     injectionTime: .atDocumentStart,
     forMainFrameOnly: false,
     requiredInAllContentWorlds: true,
-    messageHandlerNames: ["callHandler","jsCallClient"])
+    messageHandlerNames: ["callHandler"])
 
 let JAVASCRIPT_BRIDGE_JS_SOURCE = """
 window.\(JAVASCRIPT_BRIDGE_NAME) = {};
@@ -25,6 +25,14 @@ window.\(JAVASCRIPT_BRIDGE_NAME).callHandler = function() {
     var _windowId = \(WINDOW_ID_VARIABLE_JS_SOURCE);
     var _callHandlerID = setTimeout(function(){});
     window.webkit.messageHandlers['callHandler'].postMessage( {'handlerName': arguments[0], '_callHandlerID': _callHandlerID, 'args': JSON.stringify(Array.prototype.slice.call(arguments, 1)), '_windowId': _windowId} );
+    return new Promise(function(resolve, reject) {
+        window.\(JAVASCRIPT_BRIDGE_NAME)[_callHandlerID] = resolve;
+    });
+};
+window.\(JAVASCRIPT_BRIDGE_NAME).jsCallClient = function() {
+    var _windowId = \(WINDOW_ID_VARIABLE_JS_SOURCE);
+    var _callHandlerID = setTimeout(function(){});
+    window.webkit.messageHandlers['callHandler'].postMessage( {'handlerName': 'jsCallClient', '_callHandlerID': _callHandlerID, 'args': JSON.stringify(Array.prototype.slice.call(arguments, 0)), '_windowId': _windowId} );
     return new Promise(function(resolve, reject) {
         window.\(JAVASCRIPT_BRIDGE_NAME)[_callHandlerID] = resolve;
     });
