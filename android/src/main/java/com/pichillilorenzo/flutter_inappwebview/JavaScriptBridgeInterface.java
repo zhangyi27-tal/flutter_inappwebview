@@ -1,5 +1,6 @@
 package com.pichillilorenzo.flutter_inappwebview;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -134,14 +135,16 @@ public class JavaScriptBridgeInterface {
 
   /**
    * jsCallClient 海外项目专用
-   * @param args
+   * @param params
    */
+  @SuppressLint("JavascriptInterface")
   @JavascriptInterface
-  public void jsCallClient(final String args) {
+  public void jsCallClient(String params) {
     if (inAppWebView == null) {
       return;
     }
-    Log.d(LOG_TAG, "收到nativejs jsCallClient: " + "args=" + args);
+    final String args = params;
+    Log.d(LOG_TAG, "收到nativejs hw jsCallClient: " + "args=" + args);
     final String handlerName = "jsCallClient";
     JSONArray jsonArray = new JSONArray();
     jsonArray.put(args);
