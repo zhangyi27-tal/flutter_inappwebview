@@ -16,7 +16,7 @@ let JAVASCRIPT_BRIDGE_JS_PLUGIN_SCRIPT = PluginScript(
     injectionTime: .atDocumentStart,
     forMainFrameOnly: false,
     requiredInAllContentWorlds: true,
-    messageHandlerNames: ["callHandler"])
+    messageHandlerNames: ["callHandler","jsCallClient"])
 
 let JAVASCRIPT_BRIDGE_JS_SOURCE = """
 window.\(JAVASCRIPT_BRIDGE_NAME) = {};
