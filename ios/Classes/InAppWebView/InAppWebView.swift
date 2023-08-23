@@ -2626,6 +2626,21 @@ if(window.\(JAVASCRIPT_BRIDGE_NAME)[\(_callHandlerID)] != null) {
         })
     }
     
+    public func jsCallClient(handlerName: String, args: String) {
+        let arguments: [String: Any] = ["handlerName": handlerName, "args": args]
+        
+        // invoke flutter javascript handler and send back flutter data as a JSON Object to javascript
+        channel?.invokeMethod("onCallJsHandler", arguments: arguments, result: {(result) -> Void in
+            if result is FlutterError {
+                print((result as! FlutterError).message ?? "")
+            }
+            else if (result as? NSObject) == FlutterMethodNotImplemented {}
+            else {
+            
+            }
+        })
+    }
+    
     public func onWebContentProcessDidTerminate() {
         channel?.invokeMethod("onWebContentProcessDidTerminate", arguments: [])
     }
@@ -2738,7 +2753,31 @@ if(window.\(JAVASCRIPT_BRIDGE_NAME)[\(_callHandlerID)] != null) {
                 webView = webViewTransport.webView
             }
             webView.onCallJsHandler(handlerName: handlerName, _callHandlerID: _callHandlerID, args: args)
-        } else if message.name == "onFindResultReceived" {
+        }else if message.name == "jsCallClient" {
+            let body = message.body as! [String: Any?]
+            let handlerName = "jsCallClient"
+        
+            let args = body["args"] as! String
+
+            let _windowId = body["_windowId"] as? Int64
+            var webView = self
+            if let wId = _windowId, let webViewTransport = InAppWebView.windowWebViews[wId] {
+                webView = webViewTransport.webView
+            }
+            let array = [args]
+
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: array, options: [])
+
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    webView.jsCallClient(handlerName: handlerName, args: jsonString)
+                }
+                
+            } catch {
+                print("hwjs数组转换为JSON字符串时出错：\(error)")
+            }
+
+        }else if message.name == "onFindResultReceived" {
             let body = message.body as! [String: Any?]
             let findResult = body["findResult"] as! [String: Any]
             let activeMatchOrdinal = findResult["activeMatchOrdinal"] as! Int
